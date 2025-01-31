@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Request Logs - Indian Pincode Finder{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mb-4">
+        <i class="fas fa-history fa-icon"></i>Request Logs
+    </h1>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Search History</h2>
+                    <p class="card-text">
+                        Below is the history of all pincode search requests made on this website.
+                    </p>
+
+                    <!-- Logs Table -->
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th><i class="fas fa-clock fa-icon"></i>Timestamp</th>
+                                    <th><i class="fas fa-map-pin fa-icon"></i>Pincode</th>
+                                    <th><i class="fas fa-info-circle fa-icon"></i>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if logs %}
+                                    {% for log in logs %}
+                                        <tr>
+                                            <td>{{ log['timestamp'] }}</td>
+                                            <td>{{ log['pincode'] }}</td>
+                                            <td>
+                                                {% if log['status'] == 'Success' %}
+                                                    <span class="badge bg-success">{{ log['status'] }}</span>
+                                                {% elif log['status'] == 'No data found' %}
+                                                    <span class="badge bg-warning">{{ log['status'] }}</span>
+                                                {% elif log['status'] == 'API Error' %}
+                                                    <span class="badge bg-danger">{{ log['status'] }}</span>
+                                                {% else %}
+                                                    <span class="badge bg-secondary">{{ log['status'] }}</span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="3" class="text-center">No logs available.</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Clear Logs Button -->
+                    <div class="text-center mt-4">
+                        <form method="POST" action="/clear-logs">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash fa-icon"></i>Clear Logs
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

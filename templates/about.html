@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}About - Indian Pincode Finder{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mb-4">
+        <i class="fas fa-info-circle fa-icon"></i>About Us
+    </h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Welcome to Indian Pincode Finder</h2>
+                    <p class="card-text">
+                        Indian Pincode Finder is a web application designed to help users quickly and easily find details about Indian postal codes (pincodes). Whether you're looking for post office information, district details, or state information, our tool provides accurate and up-to-date data.
+                    </p>
+
+                    <h3 class="mt-4">Our Mission</h3>
+                    <p>
+                        Our mission is to simplify the process of finding pincode-related information in India. We aim to provide a user-friendly platform that is accessible to everyone, from individuals to businesses.
+                    </p>
+
+                    <h3 class="mt-4">How It Works</h3>
+                    <p>
+                        Our application uses the <a href="https://postalpincode.in/" target="_blank">PostalPincode.in API</a> to fetch pincode details. Simply enter a 6-digit Indian pincode, and our system will retrieve and display the relevant information.
+                    </p>
+
+                    <h3 class="mt-4">Features</h3>
+                    <ul>
+                        <li><strong>Search Pincode Details</strong>: Get detailed information about any Indian pincode.</li>
+                        <li><strong>Custom API</strong>: Use our custom API endpoint to fetch pincode details programmatically.</li>
+                        <li><strong>Request Logs</strong>: View a history of all pincode searches.</li>
+                        <li><strong>Responsive Design</strong>: Access the website on any device, from desktops to mobile phones.</li>
+                    </ul>
+
+                    <h3 class="mt-4">Our Team</h3>
+                    <p>
+                        We are a passionate team of developers and designers dedicated to creating useful tools for the community. If you have any questions or feedback, feel free to <a href="/contact">contact us</a>.
+                    </p>
+
+                    <h3 class="mt-4">Why Choose Us?</h3>
+                    <p>
+                        - <strong>Accurate Data</strong>: We rely on trusted sources for pincode information.<br>
+                        - <strong>Easy to Use</strong>: Our interface is simple and intuitive.<br>
+                        - <strong>Free to Use</strong>: No hidden fees or subscriptions.<br>
+                    </p>
+
+                    <h3 class="mt-4">Contact Us</h3>
+                    <p>
+                        Have questions or suggestions? We'd love to hear from you! Visit our <a href="/contact">Contact Us</a> page to get in touch.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

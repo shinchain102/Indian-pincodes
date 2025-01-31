@@ -1,0 +1,48 @@
+/* Custom Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F8FAFC;
+    color: #1E293B;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #1E293B;
+}
+
+.navbar, .footer {
+    background-color: #2563EB;
+}
+
+.navbar-brand, .nav-link, .footer-text {
+    color: white !important;
+}
+
+.form-container, .card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #2563EB;
+    border-color: #2563EB;
+}
+
+.btn-primary:hover {
+    background-color: #1E40AF;
+    border-color: #1E40AF;
+}
+
+.fa-icon {
+    margin-right: 8px;
+}
+
+.text-success {
+    color: #10B981 !important;
+}
+
+.text-error {
+    color: #EF4444 !important;
+}

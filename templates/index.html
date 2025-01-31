@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Indian Pincode Finder{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Section -->
+    <div class="text-center my-5 py-5">
+        <h1 class="display-4 fw-bold">
+            <i class="fas fa-map-marker-alt fa-icon"></i>Indian Pincode Finder
+        </h1>
+        <p class="lead text-muted">
+            Find detailed information about any Indian postal code quickly and easily.
+        </p>
+    </div>
+
+    <!-- Search Form -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="form-container p-4 mb-5">
+                <h2 class="text-center mb-4">
+                    <i class="fas fa-search fa-icon"></i>Search Pincode Details
+                </h2>
+                <form method="POST">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="pincode" name="pincode" placeholder="Enter Pincode (e.g., 110001)" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search fa-icon"></i>Search
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Display Pincode Details -->
+    {% if pincode_details %}
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="mt-5">
+                    <h2 class="text-center mb-4">
+                        <i class="fas fa-info-circle fa-icon"></i>Pincode Details
+                    </h2>
+                    {% if pincode_details == "No details found for this pincode." or pincode_details == "Failed to fetch data from the API." %}
+                        <div class="alert alert-warning text-center">
+                            {{ pincode_details }}
+                        </div>
+                    {% else %}
+                        <div class="row">
+                            {% for detail in pincode_details %}
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <i class="fas fa-building fa-icon"></i>{{ detail['Name'] }}
+                                            </h5>
+                                            <p class="card-text">
+                                                <strong><i class="fas fa-code-branch fa-icon"></i>Branch Type:</strong> {{ detail['BranchType'] }}<br>
+                                                <strong><i class="fas fa-map fa-icon"></i>District:</strong> {{ detail['District'] }}<br>
+                                                <strong><i class="fas fa-flag fa-icon"></i>State:</strong> {{ detail['State'] }}<br>
+                                                <strong><i class="fas fa-globe fa-icon"></i>Country:</strong> {{ detail['Country'] }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Popular Pincodes Section -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">
+                        <i class="fas fa-fire fa-icon"></i>Popular Pincodes
+                    </h2>
+                    <div class="row">
+                        <div class="col-md-3 text-center">
+                            <a href="/?pincode=110001" class="btn btn-outline-primary mb-2">110001 (Connaught Place)</a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="/?pincode=400001" class="btn btn-outline-primary mb-2">400001 (Mumbai)</a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="/?pincode=600001" class="btn btn-outline-primary mb-2">600001 (Chennai)</a>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <a href="/?pincode=700001" class="btn btn-outline-primary mb-2">700001 (Kolkata)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">
+                        <i class="fas fa-cogs fa-icon"></i>How It Works
+                    </h2>
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-search fa-3x mb-3" style="color: #2563EB;"></i>
+                                <h4>Step 1: Enter Pincode</h4>
+                                <p>Enter a 6-digit Indian pincode in the search box.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-database fa-3x mb-3" style="color: #10B981;"></i>
+                                <h4>Step 2: Fetch Data</h4>
+                                <p>Our system fetches details from the PostalPincode.in API.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-info-circle fa-3x mb-3" style="color: #1E40AF;"></i>
+                                <h4>Step 3: View Results</h4>
+                                <p>Get detailed information about the pincode in seconds.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="text-center mb-4">
+                        <i class="fas fa-comments fa-icon"></i>What Our Users Say
+                    </h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card testimonial-card h-100">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <i class="fas fa-quote-left fa-icon"></i>
+                                        This tool is amazing! It helped me find post office details quickly and easily.
+                                        <i class="fas fa-quote-right fa-icon"></i>
+                                    </p>
+                                    <p class="text-end"><strong>- John Doe</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card testimonial-card h-100">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <i class="fas fa-quote-left fa-icon"></i>
+                                        Very user-friendly and accurate. Highly recommended!
+                                        <i class="fas fa-quote-right fa-icon"></i>
+                                    </p>
+                                    <p class="text-end"><strong>- Jane Smith</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card testimonial-card h-100">
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <i class="fas fa-quote-left fa-icon"></i>
+                                        A must-have tool for anyone dealing with Indian pincodes.
+                                        <i class="fas fa-quote-right fa-icon"></i>
+                                    </p>
+                                    <p class="text-end"><strong>- Rajesh Kumar</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

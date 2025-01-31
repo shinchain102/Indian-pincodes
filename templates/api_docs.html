@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}API Documentation - Indian Pincode Finder{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center mb-4">
+        <i class="fas fa-book fa-icon"></i>API Documentation
+    </h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Custom API Endpoint</h2>
+                    <p class="card-text">
+                        Our custom API endpoint allows you to fetch pincode details programmatically. Below is the documentation for using the API.
+                    </p>
+
+                    <h3 class="mt-4">Endpoint</h3>
+                    <pre><code>GET /api/pincode/&lt;pincode&gt;</code></pre>
+
+                    <h3 class="mt-4">Parameters</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>pincode</code></td>
+                                <td>The Indian postal code (pincode) you want to look up. Must be a 6-digit number.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3 class="mt-4">Response</h3>
+                    <p>The API returns a JSON response with the following structure:</p>
+                    <pre><code>
+{
+    "status": "success",
+    "pincode": "110001",
+    "details": [
+        {
+            "Name": "Connaught Place",
+            "BranchType": "Head Post Office",
+            "District": "New Delhi",
+            "State": "Delhi",
+            "Country": "India"
+        }
+    ]
+}
+                    </code></pre>
+
+                    <h3 class="mt-4">Example Request</h3>
+                    <p>To fetch details for pincode <code>110001</code>, make a GET request to:</p>
+                    <pre><code>GET /api/pincode/110001</code></pre>
+
+                    <h3 class="mt-4">Example Response</h3>
+                    <pre><code>
+{
+    "status": "success",
+    "pincode": "110001",
+    "details": [
+        {
+            "Name": "Connaught Place",
+            "BranchType": "Head Post Office",
+            "District": "New Delhi",
+            "State": "Delhi",
+            "Country": "India"
+        }
+    ]
+}
+                    </code></pre>
+
+                    <h3 class="mt-4">Error Responses</h3>
+                    <p>If the pincode is invalid or no details are found, the API will return an error response:</p>
+                    <pre><code>
+{
+    "status": "error",
+    "message": "No details found for this pincode."
+}
+                    </code></pre>
+
+                    <h3 class="mt-4">Rate Limiting</h3>
+                    <p>Currently, there are no rate limits for the API. However, please use it responsibly.</p>
+
+                    <h3 class="mt-4">Contact</h3>
+                    <p>If you have any questions or issues, feel free to <a href="/contact">contact us</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
